@@ -42,6 +42,7 @@ python3 dataDownloader.py
 ## Downloads data structure
 
 The files will be downloaded on the following folder organization structure.
+```
 Chosed Downloads Folder
 └── rawMqtt
     ├── 001e064a87a6
@@ -76,7 +77,7 @@ Chosed Downloads Folder
     │   ├── GPRMCPL.json
     │   ├── IPS7100CNR.json
     │   └── SCD30.json
-    
+```    
 - Node: Each "node" represents a distinct entity or device.
    - Sensor Files: For each node, there is a collection of sensor files.
        - Daily .csv Files: Every sensor within a node generates a unique .csv file on a daily basis. This file contains data specific to that sensor for the given day.
