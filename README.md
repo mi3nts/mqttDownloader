@@ -90,6 +90,7 @@ For Example
          - 01: Subdirectory for the month of January.
            - 12: Subdirectory for the 12th day of the month.
               - MINTS_001e064a87a6_AS7265X_2024_01_12.csv: CSV file containing data from the AS7265X sensor for January 12, 2024.
+      - AS7265X.json: JSON file containing the latest data for the AS7265X sensor.
 
 
 
