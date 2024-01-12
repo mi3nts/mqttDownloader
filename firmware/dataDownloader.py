@@ -95,33 +95,7 @@ def on_message_DC(client, userdata, msg):
     except Exception as e:
         print("[ERROR] Could not publish data, error: {}".format(e))
 
-def on_connect_LR(client, userdata, flags, rc):
-    print("Connected with result code "+str(rc))
-    topic = "utd/lora/app/5/device/+/event/up"
-    client.subscribe(topic)
-    print("Subscrbing to Topic: "+ topic)
 
-def on_message_LR(client, userdata, msg):
-    try:
-        print("==================================================================")
-        print(" - - - MINTS DATA RECEIVED - - - ")
-        # print(msg.payload)
-        dateTime,gatewayID,nodeID,sensorID,framePort,base16Data = \
-            mLR.loRaSummaryWrite(msg,portInfo)
-        
-
-        print("Node ID         : " + nodeID)
-        print("Sensor ID       : " + sensorID)
-        print(nodeID in nodeIDs)
-        if nodeID in nodeIDs:
-            print("Date Time       : " + str(dateTime))
-            print("Port ID         : " + str(framePort))
-            print("Base 16 Data    : " + base16Data)
-            mLR.sensorSendLoRa(dateTime,nodeID,sensorID,framePort,base16Data)
-        
-    
-    except Exception as e:
-        print("[ERROR] Could not publish data, error: {}".format(e))
 
 def on_connect_LN(client, userdata, flags, rc):
     print("Connected with result code "+str(rc))
