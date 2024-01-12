@@ -114,7 +114,6 @@ def on_message_LN(client, userdata, msg):
 
         print("Node ID         : " + nodeID)
         print("Sensor ID       : " + sensorID)
-        print(nodeID in nodeIDs)
         if nodeID in nodeIDs:
             print("Date Time       : " + str(dateTime))
             print("Port ID         : " + str(framePort))
