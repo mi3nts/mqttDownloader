@@ -1,8 +1,10 @@
 
 
-# MQTT Client demo
-# Continuously monitor two different MQTT topics for data,
-# check if the received data matches two predefined 'commands'
+
+
+
+
+
 import threading
 import paho.mqtt.client as mqtt
 import ast
