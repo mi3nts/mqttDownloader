@@ -25,13 +25,13 @@ git clone https://github.com/mi3nts/mqttDownloader.git
 4. Install dependancies
 ```
 cd mqttDownloader
-pip3 install -r requirements.txt
+pip install -r requirements.txt
 ```
    
 5. Implement the program:
 ```
 cd firmware
-python3 dataDownloader.py
+python dataDownloader.py
 ```
 
 6. Follow the prompts to provide the following information:
