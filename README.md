@@ -39,6 +39,43 @@ python3 dataDownloader.py
 - Location of the provided files (credentials, node list, certificates)
 
 
+## Windows based systems
+
+1. Obtain the following files from a Mints team member:
+- Credentials file
+- Node list file
+- Certificates file
+
+2. Create a virtual environment and activate it:
+```
+python -m venv mDEV
+.\mDEV\Scripts\activate  
+```
+
+3. Clone mqttDownloader to a preferred location using a power shell:
+```
+cd /home/teamlary/gitHubRepos
+git clone https://github.com/mi3nts/mqttDownloader.git
+```
+4. Install dependancies
+```
+cd mqttDownloader
+pip3 install -r requirements.txt
+```
+   
+5. Implement the program:
+```
+cd firmware
+python dataDownloader.py
+```
+
+6. Follow the prompts to provide the following information:
+- Downloads location
+- Location of the provided files (credentials, node list, certificates)
+
+
+
+
 ## Downloads data structure
 
 The files will be downloaded on the following folder organization structure.
