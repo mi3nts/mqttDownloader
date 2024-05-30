@@ -1,12 +1,3 @@
-
-
-
-
-
-
-
-
-
 import threading
 import paho.mqtt.client as mqtt
 import ast

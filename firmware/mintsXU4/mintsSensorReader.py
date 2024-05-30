@@ -25,7 +25,7 @@ import time
 import serial
 import pynmea2
 from collections import OrderedDict
-import netifaces as ni
+# import netifaces as ni
 import math
 
 macAddress              = mD.macAddress
