@@ -7,7 +7,7 @@ This repository contains firmware designed for downloading MQTT data.
 1. Obtain the following files from a Mints team member:
    - Credentials file
    - Node list file
-   - Sensor lisy file
+   - Sensor list file
 
 
 2. Clone mqttDownloader to a preferred location:
