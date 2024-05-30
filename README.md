@@ -7,9 +7,9 @@ This repository contains firmware designed for downloading MQTT data.
 ### On Unix based systems
    
 1. Obtain the following files from a Mints team member:
-- Credentials file
-- Node list file
-- Certificates file
+   - Credentials file
+   - Node list file
+   - Sensor lisy file
 
 2. Create a virtual environment and activate it:
 ```
