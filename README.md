@@ -36,7 +36,7 @@ python3 dataDownloader.py
 
 6. Follow the prompts to provide the following information:
 - Downloads location
-- Location of the provided files (credentials, node list, certificates)
+- Location of the provided files (credentials file, node list, sensor list)
 
 
 ## Windows based systems
