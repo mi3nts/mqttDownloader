@@ -26,7 +26,7 @@ def choose_file(messageStr,fileExt):
     messagebox.showinfo("Message", messageStr)
 
     # Open the file dialog
-    file_path =  filedialog.askopenfilename(title= messageStr,filetypes=[("fileType", "*."+ fileExt)])
+    file_path =  filedialog.askopenfilename(title= messageStr,filetypes=[("File Type", fileExt)])
 
     # Destroy the Tkinter window
     root.destroy()

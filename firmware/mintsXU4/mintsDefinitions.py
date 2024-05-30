@@ -9,26 +9,28 @@ import yaml
 from mintsXU4 import mintsDownloader as mDL
 import tkinter as tk
 from tkinter import filedialog
+import certifi
+
 
 dataFolder                = mDL.choose_folder("Please choose a downloads directory")
 dataFolderReference       = dataFolder+ "/reference"
 dataFolderMQTTReference   = dataFolder+ "/referenceMqtt"  # The path of your MQTT Reference Data 
 dataFolderMQTT            = dataFolder + "/rawMqtt"        # The path of your MQTT Raw Data 
-tlsCertsFile              = mDL.choose_file("Please choose TLS Certs file","crt")  # The path of your TLS cert
+
+# tlsCertsFile              = mDL.choose_file("Please choose TLS Certs file","crt")  # The path of your TLS cert
+tlsCertsFile              = certifi.where()
+
 
 latestOn                  = False
 mqttOn                    = True
 
-credentials               = mDL.load_yaml_file(mDL.choose_file("Please choose the mints credentials file","yaml"))
+credentials               = mDL.load_yaml_file(mDL.choose_file("Please choose the mints credentials file",".yaml"))
 
-sensorInfo                = pd.read_csv('https://raw.githubusercontent.com/mi3nts/mqttSubscribersV2/main/lists/sensorIDs.csv')
+nodeInfo                   = mDL.load_yaml_file(mDL.choose_file("Please choose the MINTS Nodes List",".yaml"))
+
+sensorInfo                = mDL.load_yaml_file(mDL.choose_file("Please choose the MINTS Sensor List",".yaml"))
+
 portInfo                  = pd.read_csv('https://raw.githubusercontent.com/mi3nts/mqttSubscribersV2/main/lists/portIDs.csv')
-# nodeInfo                  = pd.read_csv('https://raw.githubusercontent.com/mi3nts/AirQualityAnalysisWorkflows/main/influxdb/nodered-docker/id_lookup.csv')
-
-
-nodeInfo                   = mDL.load_yaml_file(mDL.choose_file("Please choose the MINTS Nodes List","yaml"))
-# nodeInfoDC                 = load_yaml_file(choose_file("Please choose the mints DC Nodes List","*.yaml"))
-# nodeInfoLN                 = load_yaml_file(choose_file("Please choose the mints LN Nodes List","*.yaml"))
 
 mqttBrokerDC                = "mqtt.circ.utdallas.edu"
 mqttBrokerLoRa              = "mqtt.lora.trecis.cloud"

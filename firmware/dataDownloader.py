@@ -5,6 +5,8 @@
 
 
 
+
+
 import threading
 import paho.mqtt.client as mqtt
 import ast
@@ -21,8 +23,12 @@ from mintsXU4 import mintsLoRaReader as mLR
 import sys
 import pandas as pd
 
+
+
 # Common Inputs
 mqttCredentialsFile   = mD.credentials
+
+
 tlsCert               = mD.tlsCertsFile
 
 sensorInfo            = mD.sensorInfo
@@ -31,10 +37,11 @@ credentials           = mD.credentials
 portInfo              = mD.portInfo
 nodeInfo              = mD.nodeInfo
 
+
 connected             = False  # Stores the connection status
 
 nodeIDs               = nodeInfo['nodeIDs']
-sensorIDs             = sensorInfo['sensorID']
+sensorIDs             = sensorInfo['sensorIDs']
 
 ## DC Inputs
 mqttPortDC              = mD.mqttPortDC
@@ -50,10 +57,7 @@ mqttBrokerLN            = mD.mqttBrokerLoRa
 mqttUNLN                = credentials['LoRaMqtt']['username'] 
 mqttPWLN                = credentials['LoRaMqtt']['password'] 
 
-
-
 decoder = json.JSONDecoder(object_pairs_hook=collections.OrderedDict)
-
 
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect_DC(client, userdata, flags, rc):
@@ -78,12 +82,13 @@ def on_message_DC(client, userdata, msg):
         sensorDictionary = decoder.decode(msg.payload.decode("utf-8","ignore"))
         print("Node ID   :" + nodeID)
         print("Sensor ID :" + sensorID)
-        print("Data      : " + str(sensorDictionary))
+        print("Data      :" + str(sensorDictionary))
         
         if sensorID== "FRG001":
             dateTime  = datetime.datetime.strptime(sensorDictionary["dateTime"], '%Y-%m-%d %H:%M:%S')
         else:
             dateTime  = datetime.datetime.strptime(sensorDictionary["dateTime"], '%Y-%m-%d %H:%M:%S.%f')
+
         writePath = mSR.getWritePathMQTT(nodeID,sensorID,dateTime)
         exists    = mSR.directoryCheck(writePath)
         sensorDictionary = decoder.decode(msg.payload.decode("utf-8","ignore"))
@@ -111,15 +116,15 @@ def on_message_LN(client, userdata, msg):
         dateTime,gatewayID,nodeID,sensorID,framePort,base16Data = \
             mLR.loRaSummaryWrite(msg,portInfo)
         
-
         print("Node ID         : " + nodeID)
         print("Sensor ID       : " + sensorID)
         if nodeID in nodeIDs:
-            print("Date Time       : " + str(dateTime))
-            print("Port ID         : " + str(framePort))
-            print("Base 16 Data    : " + base16Data)
-            mLR.sensorSendLoRa(dateTime,nodeID,sensorID,framePort,base16Data)
-        
+            for sensorID in sensorIDs:
+                print("Date Time       : " + str(dateTime))
+                print("Port ID         : " + str(framePort))
+                print("Base 16 Data    : " + base16Data)
+                mLR.sensorSendLoRa(dateTime,nodeID,sensorID,framePort,base16Data)
+            
     
     except Exception as e:
         print("[ERROR] Could not publish data, error: {}".format(e))
