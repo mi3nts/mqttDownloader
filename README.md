@@ -39,7 +39,7 @@ python3 dataDownloader.py
 - Location of the provided files (credentials file, node list, sensor list)
 
 
-## Windows based systems
+## Windows systems
 
 1. Obtain the following files from a Mints team member:
 - Credentials file
